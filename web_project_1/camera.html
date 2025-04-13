@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Access</title>
+</head>
+
+<body>
+  <h1 class="css_nM104S">
+    Camera Access
+  </h1>
+
+  <video class="css_EJ7682"></video>
+
+  <script>
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function (stream) {
+        document.body.querySelector('video.css_EJ7682').srcObject = stream
+        document.body.querySelector('video.css_EJ7682').play()
+      })
+      .catch(function (error) {
+        alert(error.message)
+      })
+  </script>
+</body>
+
+</html>
