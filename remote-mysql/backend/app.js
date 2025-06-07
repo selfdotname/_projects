@@ -3,6 +3,7 @@ import session from "express-session";
 import MySQLStore from "express-mysql-session";
 
 import { mysqlRouter } from "./Routes/mysqlRoutes.js";
+import { pool } from "./database.js";
 
 const options = {
   host: "sql7.freesqldatabase.com",
@@ -13,15 +14,15 @@ const options = {
 const PORT = 3000;
 
 const app = express();
-const MySQLStoreClass = MySQLStore(session)
-const sessionStore = new MySQLStoreClass(options);
+const MySQLStoreClass = MySQLStore(session);
+const sessionStore = new MySQLStoreClass(options, pool);
 
 app.use(
   session({
     secret: "my-secret",
     resave: false,
     saveUninitialized: true,
-    store: sessionStore
+    store: sessionStore,
   })
 );
 
