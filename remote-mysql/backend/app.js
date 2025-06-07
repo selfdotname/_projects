@@ -13,7 +13,8 @@ const options = {
 const PORT = 3000;
 
 const app = express();
-const sessionStore = new MySQLStore(options);
+const MySQLStoreClass = MySQLStore(session)
+const sessionStore = new MySQLStoreClass(options);
 
 app.use(
   session({
