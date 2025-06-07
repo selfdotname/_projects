@@ -6,5 +6,6 @@ export const pool = mysql2
     user: "sql7783543",
     password: "qY9JuD3Z7w",
     database: "sql7783543",
+    enableKeepAlive: true
   })
   .promise();
